@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Jasmine Spec Runner</title>
+
+  <link rel="shortcut icon" type="image/png" href="vendors/jasmine/jasmine_favicon.png">
+
+  <link rel="stylesheet" type="text/css" href="vendors/jasmine/jasmine.css">
+  <script type="text/javascript" src="vendors/jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="vendors/jasmine/jasmine-html.js"></script>
+  <script src="vendors/underscore.js"></script>
+  <script>
+        window.underscore = _.noConflict();
+  </script>
+  <script src="lib/util.js"></script>
+
+  <script src="lib/algorithms/cell.js"></script>
+  <script src="lib/spec/cellSpec.js"></script>
+  <script src="lib/algorithms/maze.js"></script>
+  <script src="lib/spec/mazeSpec.js"></script>
+
+  <script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      window.trivialReporter = new jasmine.TrivialReporter();
+
+      jasmineEnv.addReporter(trivialReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return trivialReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+        document.getElementById("__jasmine_TrivialReporter_showPassed__").checked = "true";
+        trivialReporter.outerDiv.className += ' show-passed';
+      }
+
+    })();
+  </script>
+
+</head>
+
+<body>
+</body>
+</html>
